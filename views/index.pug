@@ -1,0 +1,13 @@
+html
+  head
+    title= title
+    include includes/header
+  body.teams
+    .wrapper
+      ul
+        li
+          button(data-action='buzz' data-id='team-1') TEAM 1
+        li
+          button(data-action='buzz' data-id='team-2') TEAM 2
+    script(src='/socket.io/socket.io.js')
+    script(src='/assets/script.js')

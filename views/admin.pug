@@ -1,0 +1,20 @@
+html
+  head
+    title= title
+    include includes/header
+  body.admin
+    .wrapper
+      audio(controls)
+        source(src='')
+      ul
+        li
+          button(data-action='lock') Lock
+        li
+          button(data-action='clear') Clear
+        li
+          button(data-action='buzz' data-id='team-1') Team 1
+        li
+          button(data-action='buzz' data-id='team-2') Team 2
+      code
+    script(src='/socket.io/socket.io.js')
+    script(src='/assets/admin.js')
