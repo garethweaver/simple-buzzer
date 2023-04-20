@@ -4,6 +4,7 @@ const http = require('http')
 const server = http.createServer(app)
 const { Server } = require('socket.io')
 const io = new Server(server)
+const ip = require('ip')
 require('dotenv-safe').config()
 
 const log = []
@@ -44,5 +45,8 @@ io.on('connection', socket => {
 })
 
 server.listen(3000, () => {
-  console.log('listening on *:3000')
+  console.log(`
+    http://${ip.address()}:3000
+    http://localhost:3000
+  `)
 })
