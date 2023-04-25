@@ -166,7 +166,7 @@ input {
 /* admin page */
 
 .admin code {
-  height: 200px;
+  height: 60px;
   background: black;
   color: white;
   border-radius: 20px;
@@ -178,7 +178,7 @@ input {
 }
 
 .admin code.score {
-  height: 50px;
+  height: 35px;
 }
 
 .admin ul button {
