@@ -11,10 +11,19 @@ html
           button(data-action='lock') Lock
         li
           button(data-action='clear') Clear
+      code.score
+      ul
+        li.flex
+          button(data-action='score' data-id="team-1" data-increment="-1") T1-
+          button(data-action='score' data-id="team-1" data-increment="1") T1+
+        li.flex
+          button(data-action='score' data-id="team-2" data-increment="-1") T2-
+          button(data-action='score' data-id="team-2" data-increment="1") T2+
+      code.logs
+      ul
         li
-          button(data-action='buzz' data-id='team-1') Team 1
+          button(data-action='buzz' data-id='team-1' data-name="Admin") Team 1
         li
-          button(data-action='buzz' data-id='team-2') Team 2
-      code
+          button(data-action='buzz' data-id='team-2' data-name="Admin") Team 2
     script(src='/socket.io/socket.io.js')
     script(src='/assets/admin.js')

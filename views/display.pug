@@ -4,6 +4,14 @@ html
     include includes/header
   body.display
     .title
-      h1 test
+      .title-animate
+        h1
+        h2
+    .scores.team-1
+      .name Team 1
+      .score 0
+    .scores.team-2
+      .name Team 2
+      .score 0
     script(src='/socket.io/socket.io.js')
     script(src='/assets/display.js')

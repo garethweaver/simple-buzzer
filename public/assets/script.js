@@ -12,7 +12,14 @@ const teams = {
   'team-2': { clip: 'bell.mp3', class: 'blue' },
 }
 
+const input = document.querySelector('input')
 const buttons = document.querySelectorAll('ul button')
+
+input.addEventListener('keyup', (e) => {
+  if (e.keyCode === 13) {
+    document.activeElement.blur()
+  }
+})
 
 const setDisabled = (elms, isDisabled) => {
   return elms.forEach(elm => elm.disabled = isDisabled)
@@ -21,7 +28,7 @@ const setDisabled = (elms, isDisabled) => {
 buttons.forEach((button, idx) => {
   button.addEventListener('click', e => {
     e.preventDefault()
-    socket.emit(e.target.dataset.action, { id: e.target.dataset.id })
+    socket.emit(e.target.dataset.action, { id: e.target.dataset.id, name: input.value })
     setDisabled(buttons, true)
   })
 })

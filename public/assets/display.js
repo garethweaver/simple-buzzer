@@ -12,14 +12,16 @@ const teams = {
   'team-2': { class: 'blue', name: 'Team 2' },
 }
 
-const title = document.querySelector('h1')
+const h1 = document.querySelector('h1')
+const h2 = document.querySelector('h2')
 
 socket.on('buzz', (buzzed) => {
   const { log, team } = buzzed
   document.body.classList = 'display'
   document.body.classList.add(teams[team.id].class)
 
-  title.innerText = teams[team.id].name
+  h1.innerText = teams[team.id].name
+  h2.innerText = team.name
 
   myConfetti({
     particleCount: 200,
@@ -43,4 +45,11 @@ socket.on('buzz', (buzzed) => {
 
 socket.on('clear', () => {
   document.body.classList = 'display'
+})
+
+socket.on('scores', scores => {
+  for (const [key, value] of Object.entries(scores)) {
+    const score = document.querySelector(`.${key} .score`)
+    score.innerText = value
+  }
 })

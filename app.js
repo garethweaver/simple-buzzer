@@ -10,6 +10,7 @@ require('dotenv-safe').config()
 const log = []
 let locked = false
 let to = null
+const scores = { 'team-1': 0, 'team-2': 0 }
 
 app.set('view engine', 'pug')
 app.use(express.static('public'))
@@ -38,6 +39,11 @@ io.on('connection', socket => {
     setLocked(true)
     io.emit('buzz', { log, team })
     to = setTimeout(() => setLocked(false), 5000)
+  })
+
+  socket.on('score', ({id, increment}) => {
+    scores[id] += parseInt(increment)
+    io.emit('scores', scores)
   })
 
   socket.on('clear', () => setLocked(false))

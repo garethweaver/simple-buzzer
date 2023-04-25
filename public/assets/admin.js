@@ -1,8 +1,8 @@
 const socket = io()
 
 const teams = {
-  'team-1': { clip: 'bell.mp3', class: 'green' },
-  'team-2': { clip: 'bell.mp3', class: 'blue' },
+  'team-1': { clip: 'voice-bob-ross-canvas-world.mp3', class: 'green' },
+  'team-2': { clip: 'voice-slightly-rippled.mp3', class: 'blue' },
 }
 
 const buttons = document.querySelectorAll('ul button')
@@ -13,15 +13,14 @@ const setDisabled = (elms, isDisabled) => {
 
 buttons.forEach((button, idx) => {
   button.addEventListener('click', e => {
-    const { id } = e.target.dataset
-    const data = id ? { id } : {}
-    socket.emit(e.target.dataset.action, data)
+    socket.emit(e.target.dataset.action, e.target.dataset)
   })
 })
 
 const lockButton = document.querySelector('[data-action="lock"]')
 const player = document.querySelector('audio')
-const code = document.querySelector('code')
+const logs = document.querySelector('.logs')
+const score = document.querySelector('.score')
 
 socket.on('buzz', buzzed => {
   const { log, team } = buzzed
@@ -30,8 +29,15 @@ socket.on('buzz', buzzed => {
   document.body.classList.add(teams[team.id].class)
   player.load()
   player.play()
-  code.innerText = JSON.stringify(log)
-  code.scrollTo(0, code.scrollHeight)
+  logs.innerText = JSON.stringify(log)
+  logs.scrollTo(0, logs.scrollHeight)
+})
+
+socket.on('scores', scores => {
+  score.innerText = JSON.stringify(scores)
+  player.src = `/clips/bell.mp3`
+  player.load()
+  player.play()
 })
 
 socket.on('lock', () => {

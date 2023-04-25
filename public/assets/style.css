@@ -9,10 +9,11 @@ html {
 
 body {
   background-color: #3EECAC;
-  background-image: linear-gradient(19deg, #3EECAC 0%, #EE74E1 100%);
+  background-image: linear-gradient(19deg, #da3a8a 0%, #101150 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Sigmar', sans-serif;
+  color: white;
 }
 
 
@@ -38,17 +39,17 @@ li {
 }
 
 ul button {
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Sigmar', sans-serif;
+  color: white;
   font-weight: bold;
   border:  none;
-  min-width: 300px;
-  border-radius: 30px;
+  border-radius: 20px;
   transition: all 0.2s;
   width:  100%;
   font-size: 50px;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.75);
-  border: 2px solid white;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid black;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -69,6 +70,25 @@ canvas {
   width: 100%;
 }
 
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.input {
+  padding: 20px 0;
+}
+
+input {
+  padding: 20px 10px;
+  font-size: 50px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid black;
+  color: white;
+  width: 100%;
+}
+
 
 
 /* display page */
@@ -80,11 +100,47 @@ canvas {
   align-items: center;
 }
 
-.display h1 {
+.display .title-animate {
+  text-align: center;
   opacity: 0;
   transform: scale(0);
   transition: all 0.3s;
+}
+
+.display h1 {
   font-size: 200px;
+  margin: 0;
+}
+
+.display h2 {
+  font-size: 100px;
+  margin: 0;
+}
+
+.display .scores {
+  position: fixed;
+  bottom: 0;
+  background: black;
+  color: white;
+  transform: translateX(-50%);
+  padding: 15px 40px;
+  text-align: center;
+  border-radius: 20px 20px 0 0;
+}
+
+.display .name {
+  font-size: 40px;
+}
+
+.display .score {
+  font-size: 100px;
+}
+
+.display .scores.team-1 {
+  left: 20%;
+}
+.display .scores.team-2 {
+  left: 80%;
 }
 
 
@@ -93,18 +149,16 @@ canvas {
 
 .teams .wrapper {
   height: 100%;
-}
-
-.teams ul button {
-  height: 100%;
-}
-
-.teams ul {
-  height: 100%;
+  display: grid;
+  grid-template-rows: auto min-content;
 }
 
 .teams ul li {
   height: 50%;
+}
+
+.teams ul button {
+  height: 100%;
 }
 
 
@@ -117,19 +171,29 @@ canvas {
   color: white;
   border-radius: 20px;
   display: block;
-  margin-top: 20px;
+  margin: 10px 0;
   padding: 10px;
   overflow-x: scroll;
   font-size: 13px;
 }
 
+.admin code.score {
+  height: 50px;
+}
+
 .admin ul button {
-  padding: 40px 0;
+  padding: 25px 0;
+}
+
+.admin .flex {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
 }
 
 audio {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 
@@ -139,25 +203,25 @@ audio {
 .teams.green,
 .display.green,
 .admin.green {
-  background-image: linear-gradient(19deg, #00F100 0%, #E9B300 100%);
+  background-image: linear-gradient(19deg, #31CE6A 0%, #247600 100%);
 }
 
 .teams.blue,
 .display.blue,
 .admin.blue {
-  background-image: linear-gradient(19deg, #00F0BE 0%, #3A0BBB 100%);
+  background-image: linear-gradient(19deg, #00B8AE 0%, #3103A1 100%);
 }
 
 [data-id="team-1"] {
-  color: #6bd26b;
+  color: #00ff00;
 }
 
 [data-id="team-2"] {
-  color: #4d74fa;
+  color: #00b3ff;
 }
 
-.display.green h1,
-.display.blue h1 {
+.display.green .title-animate,
+.display.blue .title-animate {
   opacity: 1;
   transform: scale(1);
 }
