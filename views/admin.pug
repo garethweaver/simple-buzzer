@@ -13,17 +13,14 @@ html
           button(data-action='clear') Clear
       code.score
       ul
-        li.flex
-          button(data-action='score' data-id="team-1" data-increment="-1") T1-
-          button(data-action='score' data-id="team-1" data-increment="1") T1+
-        li.flex
-          button(data-action='score' data-id="team-2" data-increment="-1") T2-
-          button(data-action='score' data-id="team-2" data-increment="1") T2+
+        each _, i in Array(teams)
+          li.flex
+            button(data-action='score' data-id=`team-${i+1}` data-increment="-1") T#{i+1}-
+            button(data-action='score' data-id=`team-${i+1}` data-increment="1") T#{i+1}+
       code.logs
       ul
-        li
-          button(data-action='buzz' data-id='team-1' data-name="Admin") Team 1
-        li
-          button(data-action='buzz' data-id='team-2' data-name="Admin") Team 2
+        each _, i in Array(teams)
+          li
+            button(data-action='buzz' data-id=`team-${i+1}` data-name="Admin") Team #{i+1}
     script(src='/socket.io/socket.io.js')
     script(src='/assets/admin.js')

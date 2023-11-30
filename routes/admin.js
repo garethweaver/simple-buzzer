@@ -1,3 +1,5 @@
+const { teams } = require('../config/config')
+
 module.exports = app => {
   app.get('/admin', (req, res) => {
     const reject = () => {
@@ -20,6 +22,6 @@ module.exports = app => {
       return reject()
     }
 
-    res.render('admin', { title: 'Admin' })
+    res.render('admin', { title: 'Admin', teams })
   })
 }

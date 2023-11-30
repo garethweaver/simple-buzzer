@@ -116,12 +116,18 @@ input {
   margin: 0;
 }
 
-.display .scores {
+.display .team-scores {
   position: fixed;
   bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.display .team-scores .scores {
   background: black;
   color: white;
-  transform: translateX(-50%);
+  margin: 0 20px;
   padding: 15px 40px;
   text-align: center;
   border-radius: 20px 20px 0 0;
@@ -134,15 +140,6 @@ input {
 .display .score {
   font-size: 100px;
 }
-
-.display .scores.team-1 {
-  left: 20%;
-}
-.display .scores.team-2 {
-  left: 80%;
-}
-
-
 
 /* teams page */
 

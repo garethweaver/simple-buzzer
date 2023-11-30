@@ -7,11 +7,10 @@ html
       .title-animate
         h1
         h2
-    .scores.team-1
-      .name Team 1
-      .score 0
-    .scores.team-2
-      .name Team 2
-      .score 0
+    .team-scores
+      each _, i in Array(teams)
+        .scores(class=`team-${i+1}`)
+          .name Team #{i+1}
+          .score 0
     script(src='/socket.io/socket.io.js')
     script(src='/assets/display.js')

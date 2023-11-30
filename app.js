@@ -6,11 +6,7 @@ const { Server } = require('socket.io')
 const io = new Server(server)
 const ip = require('ip')
 require('dotenv-safe').config()
-
-const log = []
-let locked = false
-let to = null
-const scores = { 'team-1': 0, 'team-2': 0 }
+const { TEAMS, state } = require('./config/config')
 
 app.set('view engine', 'pug')
 app.use(express.static('public'))
@@ -21,38 +17,38 @@ require('./routes/display.js')(app)
 
 const setLocked = (isLocked, keepTo) => {
   if (!keepTo) {
-    clearTimeout(to)
+    clearTimeout(state.timeout)
   }
-  locked = isLocked
-  locked ? io.emit('lock') : io.emit('clear')
+  state.locked = isLocked
+  state.locked ? io.emit('lock') : io.emit('clear')
 }
 
 io.on('connection', socket => {
-  if (locked) {
+  if (state.locked) {
     setLocked(true, true)
   }
 
   socket.on('buzz', team => {
     team.at = new Date().toISOString()
-    clearTimeout(to)
-    log.push(team)
+    clearTimeout(state.timeout)
+    state.log.push(team)
     setLocked(true)
-    io.emit('buzz', { log, team })
-    to = setTimeout(() => setLocked(false), 5000)
+    io.emit('buzz', { log: state.log, team })
+    state.timeout = setTimeout(() => setLocked(false), 5000)
   })
 
   socket.on('score', ({id, increment}) => {
-    scores[id] += parseInt(increment)
-    io.emit('scores', scores)
+    state.scores[id] += parseInt(increment)
+    io.emit('scores', state.scores)
   })
 
   socket.on('clear', () => setLocked(false))
   socket.on('lock', () => setLocked(true))
 })
 
-server.listen(3000, () => {
+server.listen(3003, () => {
   console.log(`
-    http://${ip.address()}:3000
-    http://localhost:3000
+    http://${ip.address()}:3003
+    http://localhost:3003
   `)
 })

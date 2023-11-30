@@ -5,10 +5,9 @@ html
   body.teams
     .wrapper
       ul
-        li
-          button(data-action='buzz' data-id='team-1') TEAM 1
-        li
-          button(data-action='buzz' data-id='team-2') TEAM 2
+        each _, i in Array(teams)
+          li
+            button(data-action='buzz' data-id=`team-${i+1}`) TEAM #{i+1}
       .input
         label Name:
         input(type='text')
