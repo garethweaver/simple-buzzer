@@ -10,7 +10,7 @@ const myConfetti = confetti.create(myCanvas, {
 const teams = {
   'team-1': { class: 'green', name: 'Team 1' },
   'team-2': { class: 'blue', name: 'Team 2' },
-  'team-3': { class: 'blue', name: 'Team 3' },
+  'team-3': { class: 'pink', name: 'Team 3' },
 }
 
 const h1 = document.querySelector('h1')

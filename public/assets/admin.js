@@ -3,6 +3,7 @@ const socket = io()
 const teams = {
   'team-1': { clip: 'voice-bob-ross-canvas-world.mp3', class: 'green' },
   'team-2': { clip: 'voice-slightly-rippled.mp3', class: 'blue' },
+  'team-3': { clip: 'voice-having-a-cervezo.mp3', class: 'pink' },
 }
 
 const buttons = document.querySelectorAll('ul button')

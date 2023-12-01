@@ -10,6 +10,7 @@ const myConfetti = confetti.create(myCanvas, {
 const teams = {
   'team-1': { clip: 'bell.mp3', class: 'green' },
   'team-2': { clip: 'bell.mp3', class: 'blue' },
+  'team-3': { clip: 'bell.mp3', class: 'pink' },
 }
 
 const input = document.querySelector('input')

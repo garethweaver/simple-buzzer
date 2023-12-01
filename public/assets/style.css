@@ -97,6 +97,7 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 300px;
 }
 
 .display .title-animate {
@@ -134,23 +135,21 @@ input {
 }
 
 .display .name {
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .display .score {
-  font-size: 100px;
+  font-size: 200px;
 }
 
 /* teams page */
 
 .teams .wrapper {
   height: 100%;
-  display: grid;
-  grid-template-rows: auto min-content;
 }
 
 .teams ul li {
-  height: 50%;
+  height: 33.3333%;
 }
 
 .teams ul button {
@@ -208,6 +207,12 @@ audio {
   background-image: linear-gradient(19deg, #00B8AE 0%, #3103A1 100%);
 }
 
+.teams.pink,
+.display.pink,
+.admin.pink {
+  background-image: linear-gradient(19deg, #fe3636 0%, #fe36e3 100%);
+}
+
 [data-id="team-1"] {
   color: #00ff00;
 }
@@ -216,8 +221,13 @@ audio {
   color: #00b3ff;
 }
 
+[data-id="team-3"] {
+  color: #ff3485;
+}
+
 .display.green .title-animate,
-.display.blue .title-animate {
+.display.blue .title-animate,
+.display.pink .title-animate {
   opacity: 1;
   transform: scale(1);
 }
