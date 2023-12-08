@@ -30,11 +30,13 @@ io.on('connection', socket => {
 
   socket.on('buzz', team => {
     team.at = new Date().toISOString()
-    clearTimeout(state.timeout)
-    state.log.push(team)
-    setLocked(true)
-    io.emit('buzz', { log: state.log, team })
-    state.timeout = setTimeout(() => setLocked(false), 5000)
+    // discard near concurrent buzzes after first buzz
+    if (!state.locked) {
+      setLocked(true)
+      state.log.push(team)
+      io.emit('buzz', { log: state.log, team })
+      state.timeout = setTimeout(() => setLocked(false), 5000)
+    }
   })
 
   socket.on('score', ({id, increment}) => {
